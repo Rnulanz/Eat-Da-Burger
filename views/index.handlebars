@@ -12,14 +12,14 @@
     <div class="row">
         <div class="col-6">
             <div class="jumbotron to-eat">
-                <h1>Burger Menu</h1>
+                <h1 class="burgerMenu">Burger Menu</h1>
                 <hr>
                 <ul>
                     {{#each burgers}}
                         {{#unless devoured}}
-                        <li>
+                        <li class="burgerList">
                             {{burger_name}}
-                            <button class="btn btn-primary btn-sm notDevoured" data-id="{{id}}">Eat the Burger</button>
+                            <button class="btn btn-dark btn-sm notDevoured" data-id="{{id}}">Eat</button>
                         </li>
                         {{/unless}}
                     {{/each}}    
@@ -27,8 +27,8 @@
             </div>
         </div>
         <div class="col-6">
-            <div class="jumbotron">
-                <h1>Devoured Burgers</h1>
+            <div class="jumbotron devoured">
+                <h1 class="devBurger">Devoured Burgers</h1>
                 <hr>
                 <ul>
                     {{#each burgers}}
@@ -49,11 +49,12 @@
         <div class="col 12">
             <div class="jumbotron to-add">
                 <h1>What Kind of Burger Would You Like To Devour Today?</h1>
+                <hr>
                 <form>
                     <div class="form-group">
-                        <label for="newBurgers">Burger</label>
+                        <label for="newBurgers"></label>
                         <input type="text" class="form-control" id="newBurgers"  placeholder="Enter Burger">
-                        <button type="submit" class="addBurgers btn btn-primary btn-sm">Burger Time!!!</button>
+                        <button type="submit" class="addBurgers btn btn-dark btn-sm">Burger Time!!!</button>
                     </div>
                 </form>
             </div>
