@@ -26,14 +26,16 @@ function objToSql(ob){
 }
 var orm = {
     
-selectAll: function(table, cb){
-    var queryString = "SELECT * FROM " + table + ";";
+selectAll: function(tableInput, cb){
+    var queryString = "SELECT * FROM " + tableInput + ";";
+    // Perform the database query
     connection.query(queryString, function(err, result){
         if(err){
             throw err;
         }
-        cb(result)
-    })
+        // Return results in callback
+        cb(result);
+    });
 },
 
 insertOne: function(table, cols, vals ,cb){
@@ -44,7 +46,7 @@ insertOne: function(table, cols, vals ,cb){
     queryString += ") ";
     queryString += "VALUES (";
     queryString += printQuestionMarks(vals.length);
-    queryString += ") "
+    queryString += ") ";
 
     console.log(queryString);
 

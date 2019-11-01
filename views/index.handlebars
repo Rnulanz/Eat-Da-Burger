@@ -1,58 +1,63 @@
-{{!-- Setup the index.handlebars to have the template that Handlebars can render onto. --}}
 <div class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Cheeseburger Cheeseburger</h1>
+            <p class="lead">What kind of burger do you feel like consuming today?</p>
+        </div>
+    </div>
+</div>
 
-    <div class="jumbotron">
-        <h1 id="color-override">Eat the Burger</h1>
-        <p id="color-override">Make burgers, eat burgers.</p>
-        <br>
-        <h2 id="color-override">Make a Burger</h2>
-        <panel>
-            <form class="create-form">
-                <div class="form-group">
-                    <label for="newburger" id="color-override">New Burger:</label>
-                    <input type="text" id="newburger" name="burger">
-                    {{!-- Create a button in index.handlebars that will submit the user input into the database. --}}
-                    <button type="submit" class="btn btn-success" id="addburger"><span class="fa fa-thumbs-up"></span></button>
-                </div>
-            </form>
-        </panel>
-    </div><!-- /jumbotron -->
 
+<div class="container">
     <div class="row">
-        <!-- Undevoured Burgers -->
-        <div class="col-sm-6">
-            <div class="panel panel-default">
-                <div class="panel-heading" id="lefthead"><strong>New Burgers</strong></div>
-                <div class="panel-body">
-                    <ul>
-                        {{#each burgers}}
-                            {{#unless devoured}}
-                                <span><strong> {{this.id}} - {{this.burger_name}} </strong></span>
-                                <button type="button" class="eatburger btn btn-warning" id ="eatbutton" data-id="{{this.id}}" data-newDevoured="{{devour}}"><span class="fa fa-cutlery"></span></button>
-                                <hr>
-                            {{/unless}}
-                        {{/each}}
-                    </ul>
-                </div>
+        <div class="col-6">
+            <div class="jumbotron to-eat">
+                <h1>Burger Menu</h1>
+                <hr>
+                <ul>
+                    {{#each burgers}}
+                        {{#unless devoured}}
+                        <li>
+                            {{burger_name}}
+                            <button class="btn btn-primary btn-sm notDevoured" data-id="{{id}}">Eat the Burger</button>
+                        </li>
+                        {{/unless}}
+                    {{/each}}    
+                </ul>
             </div>
         </div>
-        <!-- Devoured Burgers -->
-        <div class="col-sm-6">
-            <div class="panel panel-default">
-                <div class="panel-heading" id="righthead"><strong>Devoured Burgers</strong></div>
-                <div class="panel-body">
-                    <ul>
-                        {{#each burgers}}
-                            {{#if devoured}}
-                                <span><strong> {{this.id}} - {{this.burger_name}} </strong></span>
-                                <button type="button" class="trashburger btn btn-danger" id ="trashbutton" data-id="{{this.id}}" data-newDevoured="{{devour}}"><span class="fa fa-trash"></span></button>
-                                <hr>
-                            {{/if}}
-                        {{/each}}
-                    </ul>
-                </div>
+        <div class="col-6">
+            <div class="jumbotron">
+                <h1>Devoured Burgers</h1>
+                <hr>
+                <ul>
+                    {{#each burgers}}
+                        {{#if devoured}}
+                        <li>
+                            {{burger_name}}
+                        </li>
+                        {{/if}}
+                    {{/each}}    
+                </ul>
             </div>
         </div>
-    </div><!-- /row -->
+    </div>
+</div>
 
-</div><!-- /container -->
+<div class="container">
+    <div class="row">
+        <div class="col 12">
+            <div class="jumbotron to-add">
+                <h1>What Kind of Burger Would You Like To Devour Today?</h1>
+                <form>
+                    <div class="form-group">
+                        <label for="newBurgers">Burger</label>
+                        <input type="text" class="form-control" id="newBurgers"  placeholder="Enter Burger">
+                        <button type="submit" class="addBurgers btn btn-primary btn-sm">Burger Time!!!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

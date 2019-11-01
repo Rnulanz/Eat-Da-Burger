@@ -2,14 +2,60 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-		<link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
 		<title>Burger App!</title>
-		<script src="https://code.jquery.com/jquery.js"></script>
-		<script src="/public/assets/css/burger_style.css"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link href="/public/assets/js/burgers.js">
 	</head>
 	<body>
 		{{{ body }}}
+
+	<!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Link to Bootstrap Javascript CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	
+	
+<script>
+$(function() {
+    // Add a new burger.
+	$(".addBurgers").on("click", function(event){
+		event.preventDefault();
+		var id = $(this).data("id")
+
+		var newBurger = {
+			burger_name: $("#newBurgers").val().trim(),
+			devoured: 0
+		};
+		console.log(`${id} ${newBurger.burger_name} has been added `)
+
+		$.ajax("/api/burgers", {
+			type: "POST",
+			data: newBurger
+		}).then(function(){
+			console.log(`Added new burger`)
+			//Reload the page to get updated burger list
+			location.reload();
+		})
+	})
+
+	$(".notDevoured").on("click", function(){
+	
+
+		var id = $(this).data("id");
+		var devouredState = {
+			devoured: 1
+		}
+
+		$.ajax("/api/burgers/" + id, {
+			type: "PUT",
+			data: devouredState
+		}).then(function(){
+			console.log(`Burger has been devoured`);
+			location.reload();
+		})
+	});
+})
+	</script>
 	</body>
 </html>
