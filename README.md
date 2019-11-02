@@ -1,4 +1,4 @@
-                                            # Eat-Da-Burger
+                                            *Eat-Da-Burger*
 
 ![Image description](/public/assets/img/eatdaburger.png)
 
@@ -13,41 +13,40 @@ _Directory structure_
 
 All the files and directories below are recommended:
 
-.
-├── config
-│   ├── connection.js
-│   └── orm.js
-│ 
-├── controllers
-│   └── burgers_controller.js
-│
-├── db
-│   ├── schema.sql
-│   └── seeds.sql
-│
-├── models
-│   └── burger.js
-│ 
-├── node_modules
-│ 
-├── package.json
-│
-├── public
-│   └── assets
-│       ├── css
-│       │   └── burger_style.css
-│       └── img
-│       |    └── burger.png
-│       |___js
-│           |___ burgers.js
-|
-├── server.js
-│
-└── views
-    ├── index.handlebars
-    └── layouts
-        └── main.handlebars
 
+* config
+    * connection.js
+    * orm.js
+|
+* controllers
+    * burgers_controller.js
+|
+* db
+    * schema.sql
+    * seeds.sql
+|
+* models    
+    * burger.js
+│ 
+* node_modules
+│ 
+* package.json
+│
+* public
+    * assets   
+        * css
+            * burger_style.css
+        * img
+            *  burger.png
+        * js
+            * burgers.js
+|
+* server.js
+│
+* views
+    * index.handlebars
+    * layouts
+        * main.handlebars
 
 
 Demo:
